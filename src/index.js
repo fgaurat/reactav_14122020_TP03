@@ -4,16 +4,25 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import { reducerTodoList } from './store';
+import { reducerTodoList } from './store/todos.reducer';
+// import { reducerTodoForm } from './store/todoForm.reducer';
 import thunk from 'redux-thunk';
+import { applyMiddleware, compose, createStore,combineReducers } from 'redux';
 
-import { applyMiddleware, compose, createStore } from 'redux';
+
+
+const todoReducers = combineReducers({
+  todoList:reducerTodoList,
+  form: formReducer
+  // todoForm:reducerTodoForm,
+})
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
 const store = createStore(
-  reducerTodoList,composeEnhancers(applyMiddleware(thunk)),
+  todoReducers,composeEnhancers(applyMiddleware(thunk,)),
 )
 
 ReactDOM.render(
