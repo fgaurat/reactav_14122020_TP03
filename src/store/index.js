@@ -4,7 +4,14 @@ const initialState = {
 
 export const reducerTodoList = (state = initialState,action) => {
 
-    const newState = {...state}
+    switch(action.type){
 
-    return newState;
+        case "LOAD_TODOS_OK":
+            const newState = {...state,todos : action.todos}
+            return newState;
+        default:
+            return {...state};
+    }
+
+    
 }
