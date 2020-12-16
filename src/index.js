@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { reducerTodoList } from './store';
-import { createStore } from 'redux';
+import thunk from 'redux-thunk';
 
+import { applyMiddleware, compose, createStore } from 'redux';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
 const store = createStore(
-  reducerTodoList,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+  reducerTodoList,composeEnhancers(applyMiddleware(thunk)),
+)
 
 ReactDOM.render(
   <React.StrictMode>
