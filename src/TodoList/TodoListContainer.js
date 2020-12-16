@@ -1,4 +1,5 @@
 import {connect} from 'react-redux'
+import { getAllTodos } from '../actions/todos.actions'
 import TodoList from './TodoList'
 
 
@@ -7,8 +8,8 @@ const mapStateToProps =  (state) => ({
 })
 
 const mapDispatchToProps = (dispatch)=>({
-    onDeleteTodo:dispatch({type:"DELETE_TODO"}),
-    onloadTodos:dispatch({type:"LOAD_TODO"})
+    onDeleteTodo: () => dispatch({type:"DELETE_TODO"}),
+    loadTodos: () => dispatch(getAllTodos())
 })
 
 

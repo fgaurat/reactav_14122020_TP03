@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-export default function TodoList({todos}) {
+export default function TodoList({todos,loadTodos}) {
+
+    useEffect(() => {
+        loadTodos()
+    }, [])
+
     return (
         <>
             <table className="table">
